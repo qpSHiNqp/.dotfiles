@@ -86,4 +86,4 @@ zstyle ':completion:*:default' menu select=1
 # PATH
 #export PATH=/usr/local/bin:${PATH}
 
-[ -f ~/.zshrc.include ] && source ~/.zshrc.include # 設定ファイルのinclude
+source ~/.zsh_includes/*
