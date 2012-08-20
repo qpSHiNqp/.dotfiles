@@ -19,7 +19,7 @@ set number
 set ruler
 set cursorline
 " folding
-set foldmethod=syntax
+"set foldmethod=syntax
 
 " search
 set incsearch
