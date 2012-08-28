@@ -6,14 +6,14 @@ case ${UID} in
   PROMPT2="%B%{[34m%}%_#%{[m%}%b "
   SPROMPT="%B%{[31m%}%r ? [n,y,a,e]:%{[m%}%b "
   [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && 
-	PROMPT="%{[37m%}${HOST%%.*} ${PROMPT}"
+	PROMPT="%{[36m%}${HOST%%.*} ${PROMPT}"
   ;;
 *)
   PROMPT="%{[34m%}%/%%%{[m%} "
   PROMPT2="%{[34m%}%_%%%{[m%} "
   SPROMPT="%{[31m%}%r ? [n,y,a,e]:%{[m%} "
   [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && 
-	PROMPT="%{[37m%}${HOST%%.*} ${PROMPT}"
+	PROMPT="%{[36m%}${HOST%%.*} ${PROMPT}"
   ;;
 esac 
 RPROMPT="%T"                      # 右側に時間を表示する
