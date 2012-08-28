@@ -88,4 +88,3 @@ zstyle ':completion:*:default' menu select=1
 
 [ ! -n "${REMOTEHOST}${SSH_CONNECTION}" ] && 
 	source ~/.zsh_includes/*
-;;
