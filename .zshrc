@@ -86,4 +86,6 @@ zstyle ':completion:*:default' menu select=1
 # PATH
 #export PATH=/usr/local/bin:${PATH}
 
-source ~/.zsh_includes/*
+[ ! -n "${REMOTEHOST}${SSH_CONNECTION}" ] && 
+	source ~/.zsh_includes/*
+;;
