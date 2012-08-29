@@ -1,6 +1,14 @@
 # PROMPT
 
-int=`netstat -rn | grep -m 1 -Ei '^(default|(0\.){3}0)' | awk '{ print $NF }'`
+case "${OSTYPE}" in
+  openbsd*)
+    int=`netstat -rn | grep -Ei '^(default|(0\.){3}0)' | awk '{ print $NF }'`
+  ;;
+  *)
+    int=`netstat -rn | grep -m 1 -Ei '^(default|(0\.){3}0)' | awk '{ print $NF }'`
+  ;;
+esac
+
 ip4oc=`ifconfig $int | grep -E '[0-9]{1,3}(\.[0-9]{1,3}){3}' | awk '/inet/{ print $2 }' | sed -e 's/\./\ /g' | awk '{print $4}'`
 col=`expr $ip4oc % 10`
 
