@@ -24,6 +24,7 @@ if [ -f '.zshrc' ]; then
 	rm .zshrc
 fi
 ln -s ~/.dotfiles/.zshrc
+source ~/.zshrc
 
 echo "deploying .zsh_includes/ ..."
 if [ -d '.zsh_includes' ]; then
