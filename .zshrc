@@ -1,14 +1,7 @@
 # PROMPT
 
 int=`netstat -rn | grep -Ei '^(default|(0\.){3}0)' | sed -n "1 p" | awk '{ print $NF }'`
-case "${OSTYPE}" in
-  openbsd*)
-    ip4oc=`ifconfig $int | grep -E '[0-9]{1,3}(\.[0-9]{1,3}){3}' | awk '/inet/{ print $2 }' | sed -e 's/\./\ /g' | awk '{print $4}'`
-  ;;
-  *)
-    ip4oc=`ifconfig $int | grep -E '[0-9]{1,3}(\.[0-9]{1,3}){3}' | awk '/inet/{ print $2 }' | sed -e 's/\./\ /g' | awk '{print $4}'`
-  ;;
-esac
+ip4oc=`ifconfig $int | grep -E '[0-9]{1,3}(\.[0-9]{1,3}){3}' | awk '/inet/{ print $2 }' | sed -e 's/\./\ /g' | awk '{print $4}'`
 
 col=`expr $(expr $ip4oc % 7) + 1 `
 
@@ -100,3 +93,11 @@ zstyle ':completion:*:default' menu select=1
 
 [ ! -n "${REMOTEHOST}${SSH_CONNECTION}" ] && 
 	source ~/.zsh_includes/*
+
+case "${OSTYPE}" in
+  openbsd*)
+	unalias ls
+  ;;
+  *)
+  ;;
+esac
