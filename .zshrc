@@ -10,7 +10,7 @@ case "${OSTYPE}" in
 esac
 
 ip4oc=`ifconfig $int | grep -E '[0-9]{1,3}(\.[0-9]{1,3}){3}' | awk '/inet/{ print $2 }' | sed -e 's/\./\ /g' | awk '{print $4}'`
-col=`expr $ip4oc % 7 + 1 `
+col=`expr $(expr $ip4oc % 7) + 1 `
 
 case ${UID} in
 0)
