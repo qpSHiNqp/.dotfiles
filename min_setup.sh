@@ -16,7 +16,7 @@ if [ -f '.zshrc' ]; then
 	rm .zshrc
 fi
 
-source .zshrc
+source ~/.zshrc
 
 ln -s ~/.dotfiles/.zshrc
 echo "done."
