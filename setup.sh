@@ -1,8 +1,12 @@
 #!/bin/sh
 
-dir=`dirname $0`
-echo "script path: ${dir}/`basename $0`"
-cd $dir
+cd ~
+if [ ! -d '.dotfiles' ]; then
+	echo "cloning..."
+	git clone https://github.com/qpSHiNqp/.dotfiles.git
+fi
+
+cd ~/.dotfiles
 echo "pulling latest conffiles..."
 git pull
 
@@ -16,23 +20,33 @@ fi
 
 cd ~
 echo "deploying .zshrc ..."
-rm ~/.zshrc
-ln -s ${dir}/.zshrc
+if [ -f '.zshrc' ]; then
+	rm .zshrc
+fi
+ln -s ~/.dotfiles/.zshrc
 
 echo "deploying .zsh_includes/ ..."
-rm -rf ~/.zsh_includes
-ln -s ${dir}/.zsh_includes
+if [ -d '.zsh_includes' ]; then
+	rm .zsh_includes
+fi
+ln -s ~/.dotfiles/.zsh_includes
 
 echo "deploying .vimrc ..."
-rm ~/.vimrc
-ln -s ${dir}/.vimrc
+if [ -f '.vimrc' ]; then
+	rm .vimrc
+fi
+ln -s ~/.dotfiles/.vimrc
 
 echo "deploying .vim_includes/ ..."
-rm -rf ~/.vim_includes
-ln -s ${dir}/.vim_includes
+if [ -d '.vim_includes' ]; then
+	rm .vim_includes
+fi
+ln -s ~/.dotfiles/.vim_includes
 
 echo "deploying .vim/ ..."
-rm -rf ~/.vim
-ln -s ${dir}/.vim
+if [ -d '.vim' ]; then
+	rm .vim
+fi
+ln -s ~/.dotfiles/.vim
 
 echo "done."

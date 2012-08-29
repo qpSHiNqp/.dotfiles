@@ -1,12 +1,20 @@
 #!/bin/sh
 
-dir=`dirname $0`
-echo "script path: ${dir}/`basename $0`"
-cd $dir
+cd ~
+if [ ! -d '.dotfiles' ]; then
+	echo "cloning..."
+	git clone https://github.com/qpSHiNqp/.dotfiles.git
+fi
+
+cd ~/.dotfiles
 echo "pulling latest conffiles..."
 git pull
-echo "deploying .zshrc..."
+
 cd ~
-rm ~/.zshrc
-ln -s ${dir}/.zshrc
+echo "deploying .zshrc..."
+if [ -f '.zshrc' ]; then
+	rm .zshrc
+fi
+
+ln -s ~/.dotfiles/.zshrc
 echo "done."
