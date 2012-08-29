@@ -6,10 +6,11 @@ cd $dir
 echo "pulling latest conffiles..."
 git pull
 
-echo "remove file ? [y/n]"
+echo "We may overwrite config files you editted. continue? [y/n]"
 read ANS
  
 if [ $ANS != 'y' -a $ANS != 'yes' -a $ANS != '' ]; then
+	echo "exitting..."
 	exit 0
 fi
 
