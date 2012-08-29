@@ -1,19 +1,23 @@
 # PROMPT
 
+int=`netstat -rn | grep -m 1 -Ei '^(default|(0\.){3}0)' | awk '{ print $NF }'`
+ip4oc=`ifconfig $int | grep -E '[0-9]{1,3}(\.[0-9]{1,3}){3}' | awk '/inet/{ print $2 }' | sed -e 's/\./\ /g' | awk '{print $4}'`
+col=`expr $ip4oc % 10`
+
 case ${UID} in
 0)
   PROMPT="%B%{[34m%}%/#%{[m%}%b "
   PROMPT2="%B%{[34m%}%_#%{[m%}%b "
   SPROMPT="%B%{[31m%}%r ? [n,y,a,e]:%{[m%}%b "
   [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && 
-	PROMPT="%{[36m%}${HOST%%.*} ${PROMPT}"
+	PROMPT="%{[3${col}m%}${HOST%%.*} ${PROMPT}"
   ;;
 *)
   PROMPT="%{[34m%}%/%%%{[m%} "
   PROMPT2="%{[34m%}%_%%%{[m%} "
   SPROMPT="%{[31m%}%r ? [n,y,a,e]:%{[m%} "
   [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && 
-	PROMPT="%{[36m%}${HOST%%.*} ${PROMPT}"
+	PROMPT="%{[3${col}m%}${HOST%%.*} ${PROMPT}"
   ;;
 esac 
 RPROMPT="%T"                      # 右側に時間を表示する
