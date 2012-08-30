@@ -1,12 +1,9 @@
 # PROMPT
 
-ifconfig_path=`which ifconfig`
-if [ -z $ifconfig_path -o $ifconfig_path = 'ifconfig not found' ]; then
-  setenv PATH=$PATH:/sbin
-fi
+IFCONF='/sbin/ifconfig'
 
 int=`netstat -rn | grep -Ei '^(default|(0\.){3}0)' | sed -n "1 p" | awk '{ print $NF }'`
-ip4oc=`ifconfig $int | grep -E '[0-9]{1,3}(\.[0-9]{1,3}){3}' | awk '/inet/{ print $2 }' | sed -e 's/\./\ /g' | awk '{print $4}'`
+ip4oc=`${IFCONF} $int | grep -E '[0-9]{1,3}(\.[0-9]{1,3}){3}' | awk '/inet/{ print $2 }' | sed -e 's/\./\ /g' | awk '{print $4}'`
 
 col=`expr $(expr $ip4oc % 7) + 1 `
 
