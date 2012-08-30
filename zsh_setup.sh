@@ -1,4 +1,4 @@
-#!/bin/sh
+#! /bin/zsh
 
 cd ~
 if [ ! -d '.dotfiles' ]; then
@@ -17,7 +17,6 @@ if [ -f '.zshrc' ]; then
 fi
 ln -s ~/.dotfiles/.zshrc
 
-cd ~
 echo "deploying .zsh_includes/ ..."
 if [ -d '.zsh_includes' ]; then
 	rm .zsh_includes

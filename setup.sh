@@ -1,4 +1,4 @@
-#!/bin/sh
+#! /bin/zsh
 
 cd ~
 if [ ! -d '.dotfiles' ]; then
