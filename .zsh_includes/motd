@@ -1,0 +1,6 @@
+sock=`screen -ls`
+if expr "$sock" : "No Sockets found.*" > /dev/null; then
+# display nothing
+else
+  echo $sock
+fi
