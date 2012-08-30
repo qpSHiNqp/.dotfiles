@@ -25,4 +25,5 @@ ln -s ~/.dotfiles/.zsh_includes
 
 source ~/.zshrc
 
+echo "Deployed. You must type \"source ~/.zshrc\" to apply settings you downloaded."
 echo "done."

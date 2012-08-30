@@ -53,4 +53,5 @@ if [ -d '.vim' ]; then
 fi
 ln -s ~/.dotfiles/.vim
 
+echo "Deployed. You must type \"source ~/.zshrc\" to apply settings you downloaded."
 echo "done."
