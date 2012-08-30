@@ -50,5 +50,17 @@ if [ -d '.vim' ]; then
 fi
 ln -s ~/.dotfiles/.vim
 
+echo "deploying .screenrc ..."
+if [ -f '.screenrc' ]; then
+	rm .screenrc
+fi
+ln -s ~/.dotfiles/.screenrc
+
+echo "deploying .screen_includes/ ..."
+if [ -d '.screen_includes' ]; then
+	rm .screen_includes
+fi
+ln -s ~/.dotfiles/.screen_includes
+
 echo "Deployed. You must type \"source ~/.zshrc\" to apply settings you downloaded."
 echo "done."
