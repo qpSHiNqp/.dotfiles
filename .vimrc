@@ -11,4 +11,6 @@ nmap ,r :!svn up<CR>
 " Includes
 source ~/.vim_includes/.color
 source ~/.vim_includes/.char
-source ~/.vim_includes/.vundle
+if has('mac')
+	source ~/.vim_includes/.vundle
+endif
