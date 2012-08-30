@@ -94,6 +94,7 @@ zstyle ':completion:*:default' menu select=1
 # PATH
 export PATH=/sbin:/usr/sbin:/usr/local/bin:${PATH}
 
+source ~/.zsh_includes/motd
 [ ! -n "${REMOTEHOST}${SSH_CONNECTION}" ] && 
 	source ~/.zsh_includes/*
 
