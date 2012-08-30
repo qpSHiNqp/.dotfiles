@@ -11,11 +11,18 @@ echo "pulling latest conffiles..."
 git pull
 
 cd ~
-echo "deploying .zshrc..."
+echo "deploying .zshrc ..."
 if [ -f '.zshrc' ]; then
 	rm .zshrc
 fi
 ln -s ~/.dotfiles/.zshrc
+
+cd ~
+echo "deploying .zsh_includes/ ..."
+if [ -f '.zsh_includes' ]; then
+	rm .zsh_includes
+fi
+ln -s ~/.dotfiles/.zsh_includes
 
 source ~/.zshrc
 
