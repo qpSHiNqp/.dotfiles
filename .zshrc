@@ -92,7 +92,7 @@ zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'c
 zstyle ':completion:*:default' menu select=1
 
 # PATH
-#export PATH=/usr/local/bin:${PATH}
+export PATH=/sbin:/usr/sbin:/usr/local/bin:${PATH}
 
 [ ! -n "${REMOTEHOST}${SSH_CONNECTION}" ] && 
 	source ~/.zsh_includes/*
