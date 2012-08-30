@@ -44,6 +44,9 @@ if [ -d '.vim_includes' ]; then
 fi
 ln -s ~/.dotfiles/.vim_includes
 
+[ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && 
+  echo "" > ~/.vim_includes/.vundle
+
 echo "deploying .vim/ ..."
 if [ -d '.vim' ]; then
 	rm .vim

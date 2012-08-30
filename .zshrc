@@ -13,14 +13,14 @@ case ${UID} in
   PROMPT2="%B%{[34m%}%_#%{[m%}%b "
   SPROMPT="%B%{[31m%}%r ? [n,y,a,e]:%{[m%}%b "
   [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && 
-	PROMPT="%{[3${col}m%}${HOST%%.*} ${PROMPT}"
+	PROMPT="[%{[3${col}m%}${HOST%%.*}%{[0m%}] ${PROMPT}"
   ;;
 *)
   PROMPT="%{[34m%}%/%%%{[m%} "
   PROMPT2="%{[34m%}%_%%%{[m%} "
   SPROMPT="%{[31m%}%r ? [n,y,a,e]:%{[m%} "
   [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && 
-	PROMPT="%{[3${col}m%}${HOST%%.*} ${PROMPT}"
+	PROMPT="[%{[3${col}m%}${HOST%%.*}%{[0m%}] ${PROMPT}"
   ;;
 esac 
 
