@@ -18,6 +18,7 @@ if [ $ANS != 'y' -a $ANS != 'yes' -a $ANS != '' ]; then
 	exit 0
 fi
 
+unalias rm
 cd ~
 echo "deploying .zshrc ..."
 if [ -f '.zshrc' ]; then
@@ -28,7 +29,7 @@ source ~/.zshrc
 
 echo "deploying .zsh_includes/ ..."
 if [ -d '.zsh_includes' ]; then
-	rm .zsh_includes
+	rm -rf .zsh_includes
 fi
 ln -s ~/.dotfiles/.zsh_includes
 
@@ -40,13 +41,13 @@ ln -s ~/.dotfiles/.vimrc
 
 echo "deploying .vim_includes/ ..."
 if [ -d '.vim_includes' ]; then
-	rm .vim_includes
+	rm -rf .vim_includes
 fi
 ln -s ~/.dotfiles/.vim_includes
 
 echo "deploying .vim/ ..."
 if [ -d '.vim' ]; then
-	rm .vim
+	rm -rf .vim
 fi
 ln -s ~/.dotfiles/.vim
 
@@ -58,7 +59,7 @@ ln -s ~/.dotfiles/.screenrc
 
 echo "deploying .screen_includes/ ..."
 if [ -d '.screen_includes' ]; then
-	rm .screen_includes
+	rm -rf .screen_includes
 fi
 ln -s ~/.dotfiles/.screen_includes
 

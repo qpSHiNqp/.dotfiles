@@ -19,7 +19,7 @@ ln -s ~/.dotfiles/.zshrc
 
 echo "deploying .zsh_includes/ ..."
 if [ -d '.zsh_includes' ]; then
-	rm .zsh_includes
+	rm -rf .zsh_includes
 fi
 ln -s ~/.dotfiles/.zsh_includes
 
