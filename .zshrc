@@ -3,7 +3,12 @@
 IFCONF='/sbin/ifconfig'
 
 int=`netstat -rn | grep -Ei '^(default|(0\.){3}0)' | sed -n "1 p" | awk '{ print $NF }'`
-ip4oc=`${IFCONF} $int | grep -E '[0-9]{1,3}(\.[0-9]{1,3}){3}' | awk '/inet/{ print $2 }' | sed -e 's/\./\ /g' | awk '{print $4}'`
+ifinfo=`${IFCONF} $int | awk '/inet/{ print $NF }'`
+if [ $ifinfo  = '3' ]; then
+	ip4oc=`${IFCONF} $int | awk '/inet[^6]/{ print $2 }' | sed -e 's/\.([0-9]{1,3})/\3/g'`
+else
+	ip4oc=`${IFCONF} $int | grep -E '[0-9]{1,3}(\.[0-9]{1,3}){3}' | awk '/inet/{ print $2 }' | sed -e 's/\./\ /g' | awk '{print $4}'`
+fi
 
 col=`expr $(expr $ip4oc % 7) + 1 `
 
