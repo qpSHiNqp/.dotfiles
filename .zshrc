@@ -51,8 +51,10 @@ setopt pushd_ignore_dups          # 同ディレクトリを履歴に追加し�
 setopt auto_cd                    # 自動的にディレクトリ移動
 setopt list_packed 		  # リストを詰めて表示
 setopt list_types                 # 補完一覧ファイル種別表示
+setopt noautoremoveslash
 
 setopt correct
+setopt nonomatch
 
 
 # 履歴
@@ -82,23 +84,26 @@ bindkey ";5D" backward-word
     zstyle ':completion:*' list-colors \
         'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
 
-alias ls="ls -G"
+if [[ ${OSTYPE} =~ ^darwin ]] ; then
+	alias ls="ls -G";
+fi
 alias l="ls"
 alias ll="ls -la"
 alias la="ls -a"
 alias ipv6="ip -6"
 alias mtr="sudo mtr -t"
+alias e="vim"
 
 zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
 
 zstyle ':completion:*:default' menu select=1
 
 # PATH
-export PATH=/sbin:/usr/sbin:/usr/local/bin:${PATH}
+export PATH=`brew --prefix php`/bin:/usr/local/mysql/bin:/sbin:/usr/sbin:/usr/local/bin:${PATH}
 
 source ~/.zsh_includes/motd
-[ ! -n "${REMOTEHOST}${SSH_CONNECTION}" ] && 
-	source ~/.zsh_includes/*
+[ -z "${REMOTEHOST}${SSH_CONNECTION}" ] && 
+	source ~/.zsh_includes/rvm
 
 case "${OSTYPE}" in
   openbsd*)

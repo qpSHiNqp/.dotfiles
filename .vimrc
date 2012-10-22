@@ -4,8 +4,8 @@ source ~/.vim_includes/.base
 
 " shortcut
 nmap t :tabnew 
-nmap ,n :tabNext<CR>
-nmap ,m :tabprevious<CR>
+nmap ,m :tabNext<CR>
+nmap ,n :tabprevious<CR>
 nmap ,c :!svn ci -m 
 nmap ,r :!svn up<CR> 
 

@@ -1,9 +1,9 @@
 scriptencoding utf-8
-augroup highlightIdegraphicSpace
-  autocmd!
-  autocmd Colorscheme * highlight IdeographicSpace term=underline ctermbg=DarkGreen guibg=DarkGreen
-  autocmd VimEnter,WinEnter * match IdeographicSpace /　/
-augroup END
+"augroup highlightIdegraphicSpace
+"  autocmd!
+"  autocmd Colorscheme * highlight IdeographicSpace term=underline ctermbg=DarkGreen guibg=DarkGreen
+"  autocmd VimEnter,WinEnter * match IdeographicSpace /　/
+"augroup END
 colorscheme torte
 
 syntax on

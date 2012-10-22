@@ -4,10 +4,11 @@ filetype off
 set rtp+=~/.vim/vundle.git/
 call vundle#rc()
 Bundle 'Shougo/neocomplcache'
-Bundle 'Shougo/unite.vim'
+"Bundle 'Shougo/unite.vim'
 Bundle 'thinca/vim-ref'
 Bundle 'thinca/vim-quickrun'
-Bundle 'TwitVim'
+"Bundle 'TwitVim'
+"Bundle 'sudo.vim'
 filetype plugin indent on     " required!
 
 " includes about vundled plugins
