@@ -40,7 +40,7 @@ esac
 
 bindkey -e                        # emacsライクなキーバインド
 
-export LANG=ja_JP.UTF-8           # 日本語環境
+#export LANG=ja_JP.UTF-8           # 日本語環境
 export EDITOR=vim                 # エディタはvim
 
 
