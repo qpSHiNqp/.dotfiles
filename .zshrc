@@ -99,7 +99,8 @@ zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'c
 zstyle ':completion:*:default' menu select=1
 
 # PATH
-export PATH=`brew --prefix php`/bin:/usr/local/mysql/bin:/sbin:/usr/sbin:/usr/local/bin:${PATH}
+export PATH=/usr/local/mysql/bin:/sbin:/usr/sbin:/usr/local/bin:${PATH}
+test -x /usr/local/bin/brew && export PATH=`brew --prefix php`/bin:${PATH}
 
 source ~/.zsh_includes/motd
 [ -z "${REMOTEHOST}${SSH_CONNECTION}" ] && 
