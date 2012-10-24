@@ -5,4 +5,5 @@ else
   echo $sock
 fi
 
-test -x `which alpine` && echo '--- To read mails, use "alpine" ---'
+test -e '`which alpine`' #&& echo '--- To read mails, use "alpine" ---'
+
