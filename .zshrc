@@ -85,7 +85,9 @@ bindkey ";5D" backward-word
         'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
 
 if [[ ${OSTYPE} =~ ^darwin ]] ; then
-	alias ls="ls -G";
+	alias ls="ls -G"
+elif [[ ${OSTYPE} =~ ^linux-gnu ]] ; then
+	alias ls="ls --color=autl"
 fi
 alias l="ls"
 alias ll="ls -la"
@@ -95,7 +97,6 @@ alias mtr="sudo mtr -t"
 alias e="vim"
 
 zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
-
 zstyle ':completion:*:default' menu select=1
 
 # PATH
@@ -105,11 +106,3 @@ test -x /usr/local/bin/brew && export PATH=`brew --prefix php`/bin:${PATH}
 source ~/.zsh_includes/motd
 [ -z "${REMOTEHOST}${SSH_CONNECTION}" ] && 
 	source ~/.zsh_includes/rvm
-
-case "${OSTYPE}" in
-  openbsd*)
-	unalias ls
-  ;;
-  *)
-  ;;
-esac
