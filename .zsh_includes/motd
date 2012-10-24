@@ -4,3 +4,5 @@ if expr "$sock" : "No Sockets found.*" > /dev/null; then
 else
   echo $sock
 fi
+
+test -x `which alpine` && echo '--- To read mails, use "alpine" ---'
