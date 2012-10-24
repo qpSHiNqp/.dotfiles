@@ -87,7 +87,7 @@ bindkey ";5D" backward-word
 if [[ ${OSTYPE} =~ ^darwin ]] ; then
 	alias ls="ls -G"
 elif [[ ${OSTYPE} =~ ^linux-gnu ]] ; then
-	alias ls="ls --color=autl"
+	alias ls="ls --color=auto"
 fi
 alias l="ls"
 alias ll="ls -la"
