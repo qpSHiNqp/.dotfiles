@@ -29,6 +29,14 @@ esac
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' formats '(%s)-[%b]'
 zstyle ':vcs_info:*' actionformats '(%s)-[%b|%a]'
+autoload -Uz is-at-least
+if is-at-least 4.3.10; then
+	zstyle ':vcs_info:git:*' check-for-changes true
+	zstyle ':vcs_info:git:*' stagedstr "+"
+	zstyle ':vcs_info:git:*' unstagedstr "?"
+	zstyle ':vcs_info:git:*' formats '(%s)-[%c%u%b]'
+	zstyle ':vcs_info:git:*' actionformats '(%s)-[%c%u%b|%a]'
+fi
 precmd () {
 	psvar=()
 	LANG=en_US.UTF-8 vcs_info
