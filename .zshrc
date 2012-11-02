@@ -58,7 +58,7 @@ function _git_not_pushed()
 	fi
 	return 0
 }
-RPROMPT="%1(v|%F{red}%1v%2v%f|)${vcs_info_git_pushed}${WINDOW:+"[$WINDOW]"} ${RESET}"
+RPROMPT="%1(v|%F{green}%1v%2v%f|)${vcs_info_git_pushed}${WINDOW:+"[$WINDOW]"} ${RESET}"
 
 # RPROMPT other settings
 RPROMPT="${RPROMPT} %T"           # 右側に時間を表示する
