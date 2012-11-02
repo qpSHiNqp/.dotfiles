@@ -1,7 +1,5 @@
-# PROMPT
-
+# hostname coloring
 IFCONF='/sbin/ifconfig'
-
 int=`netstat -rn | grep -Ei '^(default|(0\.){3}0)' | sed -n "1 p" | awk '{ print $NF }'`
 ip4oc=`${IFCONF} ${int} | grep -E '[0-9]{1,3}(\.[0-9]{1,3}){3}' | awk '/inet/{ print $2 }' | sed -e 's/\./\ /g' | awk '{print $4}'`
 [ $ip4oc  = '255' ] &&
@@ -9,27 +7,41 @@ ip4oc=`${IFCONF} ${int} | grep -E '[0-9]{1,3}(\.[0-9]{1,3}){3}' | awk '/inet/{ p
 
 col=`expr $(expr $ip4oc % 7) + 1 `
 
+# PROMPT
 case ${UID} in
 0)
-  PROMPT="%B%{[34m%}%/#%{[m%}%b "
-  PROMPT2="%B%{[34m%}%_#%{[m%}%b "
-  SPROMPT="%B%{[31m%}%r ? [n,y,a,e]:%{[m%}%b "
-  [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && 
+	PROMPT="%B%{[34m%}%/#%{[m%}%b "
+	PROMPT2="%B%{[34m%}%_#%{[m%}%b "
+	SPROMPT="%B%{[31m%}%r ? [n,y,a,e]:%{[m%}%b "
+	[ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && 
 	PROMPT="[%{[3${col}m%}${HOST%%.*}%{[0m%}] ${PROMPT}"
   ;;
 *)
-  PROMPT="%{[34m%}%/%%%{[m%} "
-  PROMPT2="%{[34m%}%_%%%{[m%} "
-  SPROMPT="%{[31m%}%r ? [n,y,a,e]:%{[m%} "
-  [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && 
+	PROMPT="%{[34m%}%/%%%{[m%} "
+	PROMPT2="%{[34m%}%_%%%{[m%} "
+	SPROMPT="%{[31m%}%r ? [n,y,a,e]:%{[m%} "
+	[ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && 
 	PROMPT="[%{[3${col}m%}${HOST%%.*}%{[0m%}] ${PROMPT}"
   ;;
 esac 
 
-RPROMPT="%T"                      # 右側に時間を表示する
+# vcs_info (display branch name)
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' formats '(%s)-[%b]'
+zstyle ':vcs_info:*' actionformats '(%s)-[%b|%a]'
+precmd () {
+	psvar=()
+	LANG=en_US.UTF-8 vcs_info
+	[[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
+}
+RPROMPT="%1(v|%F{red}%1v%f|)"
+
+# RPROMPT other settings
+RPROMPT="${RPROMPT} %T"           # 右側に時間を表示する
 setopt transient_rprompt          # 右側まで入力がきたら時間を消す
 setopt prompt_subst               # 便利なプロント
 
+# terminal settings
 case "${TERM}" in
 kterm*|xterm)
 	precmd() {
