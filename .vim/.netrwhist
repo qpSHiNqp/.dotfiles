@@ -1,8 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/Users/shintaro/.zsh_includes'
-let g:netrw_dirhist_2='/home/shintaro/.dotfiles/.vim'
-let g:netrw_dirhist_3='/home/shintaro/.dotfiles/.zsh_includes'
-let g:netrw_dirhist_4='/Users/shintaro/.dotfiles/.vim/plugin'
-let g:netrw_dirhist_5='/private/var/rails/heroku-sample/app/controllers'
-let g:netrw_dirhist_6='/Users/shintaro/Sites/carippo/app/View/Elements'
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/Volumes/case_sensitive/main_carippo/app'
+let g:netrw_dirhist_2='/Volumes/case_sensitive/main_carippo/app/Controller'
+let g:netrw_dirhist_3='/Volumes/case_sensitive/cms_carippo/wp-content/themes/carippo'
+let g:netrw_dirhist_4='/Volumes/case_sensitive/cms_carippo/wp-content/themes'

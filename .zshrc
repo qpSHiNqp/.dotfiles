@@ -1,29 +1,49 @@
 # hostname coloring
-IFCONF='/sbin/ifconfig'
-int=`netstat -rn | grep -Ei '^(default|(0\.){3}0)' | sed -n "1 p" | awk '{ print $NF }'`
-ip4oc=`${IFCONF} ${int} | grep -E '[0-9]{1,3}(\.[0-9]{1,3}){3}' | awk '/inet/{ print $2 }' | sed -e 's/\./\ /g' | awk '{print $4}'`
-[ $ip4oc  = '255' ] &&
-	  ip4oc=`${IFCONF} $int | awk '/inet[^6]/{ print $1 }' | sed -e 's/.*\.\([0-9]\{1,3\}\).*/\1/g'`
+ip2color()
+{
+	IFCONF='/sbin/ifconfig'
+	int=`netstat -rn | grep -Ei '^(default|(0\.){3}0)' \
+		| sed -n "1 p" | awk '{ print $NF }'`
+	ip4oc=`${IFCONF} ${int} | grep -E '[0-9]{1,3}(\.[0-9]{1,3}){3}' \
+		| awk '/inet/{ print $2 }' | sed -e 's/\./\ /g' | awk '{print $4}'`
+	[ $ip4oc  = '255' ] &&
+		  ip4oc=`${IFCONF} $int | awk '/inet[^6]/{ print $1 }' \
+		| sed -e 's/.*\.\([0-9]\{1,3\}\).*/\1/g'`
 
-col=`expr $(expr $ip4oc % 7) + 1 `
+	return `expr $(expr $ip4oc % 7) + 1`
+}
 
 # PROMPT
-case ${UID} in
-0)
-	PROMPT="%B%{[34m%}%/#%{[m%}%b "
-	PROMPT2="%B%{[34m%}%_#%{[m%}%b "
-	SPROMPT="%B%{[31m%}%r ? [n,y,a,e]:%{[m%}%b "
-	[ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && 
-	PROMPT="[%{[3${col}m%}${HOST%%.*}%{[0m%}] ${PROMPT}"
-  ;;
-*)
-	PROMPT="%{[34m%}%/%%%{[m%} "
-	PROMPT2="%{[34m%}%_%%%{[m%} "
-	SPROMPT="%{[31m%}%r ? [n,y,a,e]:%{[m%} "
-	[ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && 
-	PROMPT="[%{[3${col}m%}${HOST%%.*}%{[0m%}] ${PROMPT}"
-  ;;
-esac 
+set_prompt()
+{
+	if test $# -eq 1
+	then
+		col=$1
+	else
+		col=33
+	fi
+
+	case ${UID} in
+	0)
+		PROMPT="%B%{[34m%}%/#%{[m%}%b "
+		PROMPT2="%B%{[34m%}%_#%{[m%}%b "
+		SPROMPT="%B%{[31m%}%r ? [n,y,a,e]:%{[m%}%b "
+		[ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && 
+		PROMPT="[%{[3${col}m%}${HOST%%.*}%{[0m%}] ${PROMPT}"
+	  ;;
+	*)
+		PROMPT="%{[34m%}%/%%%{[m%} "
+		PROMPT2="%{[34m%}%_%%%{[m%} "
+		SPROMPT="%{[31m%}%r ? [n,y,a,e]:%{[m%} "
+		[ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && 
+		PROMPT="[%{[3${col}m%}${HOST%%.*}%{[0m%}] ${PROMPT}"
+	  ;;
+	esac
+}
+
+ip2color
+set_prompt $?
+
 
 # vcs_info (display branch name)
 autoload -Uz vcs_info
@@ -139,6 +159,9 @@ zstyle ':completion:*:default' menu select=1
 export PATH=/usr/local/mysql/bin:/sbin:/usr/sbin:/usr/local/bin:${PATH}
 test -x /usr/local/bin/brew && export PATH=`brew --prefix php`/bin:${PATH}
 
-source ~/.zsh_includes/motd
+if test -r ~/.zsh_includes/motd
+then
+	source ~/.zsh_includes/motd
+fi
 [ -z "${REMOTEHOST}${SSH_CONNECTION}" ] && 
 	source ~/.zsh_includes/rvm
