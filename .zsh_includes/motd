@@ -1,4 +1,5 @@
-sock=`screen -ls`
+sock=""
+test -x screen && sock=`screen -ls`
 if expr "$sock" : "No Sockets found.*" > /dev/null; then
 # display nothing
 else
