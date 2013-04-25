@@ -7,11 +7,11 @@ Bundle 'Shougo/neocomplcache'
 "Bundle 'Shougo/unite.vim'
 Bundle 'thinca/vim-ref'
 Bundle 'thinca/vim-quickrun'
-"Bundle 'TwitVim'
-"Bundle 'sudo.vim'
+Bundle 'TwitVim'
+Bundle 'sudo.vim'
 filetype plugin indent on     " required!
 
 " includes about vundled plugins
 source ~/.vim_includes/.neocomplcache
 source ~/.vim_includes/.unite
-
+source ~/.vim_includes/.vim-ref

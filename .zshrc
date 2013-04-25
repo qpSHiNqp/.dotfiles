@@ -151,17 +151,20 @@ alias la="ls -a"
 alias ipv6="ip -6"
 alias mtr="sudo mtr -t"
 alias e="vim"
+alias mv="mv -i"
+alias cp="cp -i"
+alias p="ps aux | head -n 1 && ps aux | grep"
 
 zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
 zstyle ':completion:*:default' menu select=1
 
 # PATH
-export PATH=/usr/local/mysql/bin:/sbin:/usr/sbin:/usr/local/bin:${PATH}
+export PATH=/usr/local/sbin:/Applications/adt-bundle-mac-x86_64/sdk:/Applications/adt-bundle-mac-x86_64/sdk/tools:/Applications/adt-bundle-mac-x86_64/sdk/platform-tools:/usr/local/mysql/bin:/sbin:/usr/sbin:/usr/local/bin:${PATH}
 test -x /usr/local/bin/brew && export PATH=`brew --prefix php`/bin:${PATH}
 
 if test -r ~/.zsh_includes/motd
 then
 	source ~/.zsh_includes/motd
 fi
-[ -z "${REMOTEHOST}${SSH_CONNECTION}" ] && 
+[ -z "${REMOTEHOST}${SSH_CONNECTION}" ] && [ -r ~/.rvm ] &&
 	source ~/.zsh_includes/rvm

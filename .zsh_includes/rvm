@@ -7,3 +7,5 @@ rm ruby
 ln -s `which ruby`
 
 cd
+
+rvm use 1.9.3-p194

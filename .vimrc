@@ -18,3 +18,10 @@ if has("unix")
 		source ~/.vim_includes/.vundle
 	endif
 endif
+
+set makeprg=php\ -l\ %
+set errorformat=%m\ in\ %f\ on\ line\ %l
+
+source ~/.vim_includes/.php
+source ~/.vim_includes/.git
+

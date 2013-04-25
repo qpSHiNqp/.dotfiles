@@ -3,11 +3,13 @@ set showtabline=2
 set shiftwidth=4
 set tabstop=4
 set softtabstop=2
-set noexpandtab
+set expandtab
 
 " indent
 set autoindent
 set cindent
+autocmd FileType txt set noautoindent
+autocmd FileType txt set nocindent
 
 set backspace=indent,eol,start
 set showmatch
@@ -30,7 +32,7 @@ set smartcase
 " statusline
 set laststatus=2
 set showcmd
-set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
+set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%{fugitive#statusline()}\ \ %l,%c%V%8P
 set hid
 
 set clipboard+=unnamed,autoselect

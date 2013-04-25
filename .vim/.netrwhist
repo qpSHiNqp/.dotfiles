@@ -1,6 +1,10 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
-let g:netrw_dirhist_1='/Volumes/case_sensitive/main_carippo/app'
-let g:netrw_dirhist_2='/Volumes/case_sensitive/main_carippo/app/Controller'
-let g:netrw_dirhist_3='/Volumes/case_sensitive/cms_carippo/wp-content/themes/carippo'
-let g:netrw_dirhist_4='/Volumes/case_sensitive/cms_carippo/wp-content/themes'
+let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_1='/Users/shintaro/Documents/repos/main_carippo/app/Console'
+let g:netrw_dirhist_2='/Users/shintaro/Documents/repos/main_carippo/app/Controller'
+let g:netrw_dirhist_3='/Users/shintaro/Documents/repos/main_carippo/app/View/Columnentries'
+let g:netrw_dirhist_4='/Users/shintaro/Documents/repos/admin_carippo/app/Config'
+let g:netrw_dirhist_5='/Users/shintaro/Documents/repos/wakemeshi-bot/app'
+let g:netrw_dirhist_6='/Users/shintaro/Documents/repos/stmt.d21.co.jp/.git'
+let g:netrw_dirhist_7='/Users/shintaro/Documents/repos/wakemeshi-bot/app'
+let g:netrw_dirhist_8='/Users/shintaro/Documents/repos/wakemeshi-bot/lib/tweepy'
