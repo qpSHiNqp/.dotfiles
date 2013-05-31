@@ -34,7 +34,9 @@ set smartcase
 " statusline
 set laststatus=2
 set showcmd
-set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%{fugitive#statusline()}\ \ %l,%c%V%8P
+if s:uname =~ "Darwin"
+    set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%{fugitive#statusline()}\ \ %l,%c%V%8P
+endif
 set hid
 
 set clipboard+=unnamed,autoselect
