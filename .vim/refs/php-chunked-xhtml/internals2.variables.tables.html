@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Working with HashTable Directly</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="internals2.variables.arrays.html">Working with Arrays</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="internals2.variables.creating.html">Creating variables and setting values</a></div>
+ <div class="up"><a href="internals2.variables.html">変数の作成</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="internals2.variables.tables" class="section">
+  <h2 class="title">Working with HashTable Directly</h2>
+  
+  <p class="para">The HashTable structure serves many purposes in PHP and can be found everywhere, a good understanding of it&#039;s functionality is a preqrequisite of being a good developer.</p>
+  
+  <p class="para">The HashTable implemented by the engine is a standard HashTable, that is to say, a key = &gt; value based store, where the keys are always strings, whose hashes are calculated with a built in hashing algorythim <code class="code">zend_inline_hash_func(const char* key, uint length)</code>, which results in good distribution, and reasonable usage.</p>
+  
+  <p class="para">The internal structure and exact operation of HashTables are out of the scope of this document, this document serves to inform you of the API&#039;s available and how best to use them. For a more detailed picture of the HashTable see <code class="code">Zend/zend_hash.h</code>.</p>
+  
+  <table id="internals2.variables.advrrays.api" class="doctable table">
+   <caption><strong>HashTable API</strong></caption>
+   
+    <thead>
+     <tr>
+      <th>Prototype</th>
+      <th>Description</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td><code class="code">void zend_hash_init(HashTable* ht, uint size, hash_func_t hash, dtor_func_t destructor, zend_bool persistent)</code></td>
+      <td>Initializes the hash table to hold at least <code class="code">size</code> elements, <code class="code">hash</code> exists for historical reasons and is always ignored, <code class="code">zend_inline_hash_func</code> is always used as the hashing function. <code class="code">destructor</code> may be <code class="code">NULL</code>.</td>
+     </tr>
+
+     
+    </tbody>
+   
+  </table>
+
+  
+ </div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="internals2.variables.arrays.html">Working with Arrays</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="internals2.variables.creating.html">Creating variables and setting values</a></div>
+ <div class="up"><a href="internals2.variables.html">変数の作成</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>
