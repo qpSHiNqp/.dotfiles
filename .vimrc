@@ -12,16 +12,17 @@ nmap ,r :!svn up<CR>
 " Includes
 source ~/.vim_includes/.color
 source ~/.vim_includes/.char
+
 if has("unix")
-	let s:uname = system("uname")
-	if s:uname =~ "Darwin"
-		source ~/.vim_includes/.vundle
-	endif
+    let s:uname = system("uname")
+    if s:uname =~ "Darwin"
+        source ~/.vim_includes/.vundle
+        set makeprg=php\ -l\ %
+        set errorformat=%m\ in\ %f\ on\ line\ %l
+
+        source ~/.vim_includes/.php
+        source ~/.vim_includes/.git
+    endif
 endif
 
-set makeprg=php\ -l\ %
-set errorformat=%m\ in\ %f\ on\ line\ %l
-
-source ~/.vim_includes/.php
-source ~/.vim_includes/.git
 
