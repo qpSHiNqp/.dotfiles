@@ -161,6 +161,7 @@ zstyle ':completion:*:default' menu select=1
 # PATH
 export PATH=/usr/local/sbin:/Applications/adt-bundle-mac-x86_64/sdk:/Applications/adt-bundle-mac-x86_64/sdk/tools:/Applications/adt-bundle-mac-x86_64/sdk/platform-tools:/usr/local/mysql/bin:/sbin:/usr/sbin:/usr/local/bin:${PATH}
 test -x /usr/local/bin/brew && export PATH=`brew --prefix php`/bin:${PATH}
+test -x /usr/local/share/npm/bin && export PATH=/usr/local/share/npm/bin:${PATH}
 
 if test -r ~/.zsh_includes/motd
 then
