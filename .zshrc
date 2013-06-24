@@ -159,8 +159,12 @@ zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'c
 zstyle ':completion:*:default' menu select=1
 
 # PATH
-export PATH=/usr/local/sbin:/Applications/adt-bundle-mac-x86_64/sdk:/Applications/adt-bundle-mac-x86_64/sdk/tools:/Applications/adt-bundle-mac-x86_64/sdk/platform-tools:/usr/local/mysql/bin:/sbin:/usr/sbin:/usr/local/bin:${PATH}
-test -x /usr/local/bin/brew && export PATH=`brew --prefix php`/bin:${PATH}
+export PATH=/usr/local/sbin:/sbin:/usr/sbin:/usr/local/bin:${PATH}
+test -x /usr/local/mysql && export PATH=/usr/local/mysql/bin:${PATH}
+test -x /Applications/adt-bundle-mac-x86_64 && export PATH=/usr/local/git/bin:/Applications/adt-bundle-mac-x86_64/sdk/tools:/Applications/adt-bundle-mac-x86_64/sdk/platform-tools:${PATH}
+test -x /usr/local/git && export PATH=/Applications/adt-bundle-mac-x86_64/sdk:${PATH}
+test -x /usr/local/bin/brew && PHP_EXISTS=`brew list | grep php | wc -l | awk '{print $1}'`
+test ! $PHP_EXISTS -eq 0 && export PATH=`brew --prefix php`/bin:${PATH}
 test -x /usr/local/share/npm/bin && export PATH=/usr/local/share/npm/bin:${PATH}
 
 if test -r ~/.zsh_includes/motd
