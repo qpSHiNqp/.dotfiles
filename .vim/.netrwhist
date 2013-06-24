@@ -1,6 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
-let g:netrw_dirhist_1='/Users/shintaro/Documents/hadoop-workspace/out.txt/out.txt/out.txt/out.txt'
-let g:netrw_dirhist_2='/Users/shintaro/Documents/workspace/testMapReduce01/output.txt'
-let g:netrw_dirhist_3='/Users/shintaro/Documents/repos/stmt.d21.co.jp/server/db/migrate'
-let g:netrw_dirhist_4='/Users/shintaro/Documents/repos/stmt.d21.co.jp/server/vendor/bundle/ruby/1.9.1/gems/koala-1.6.0/lib/koala'
