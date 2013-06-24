@@ -34,7 +34,7 @@ set smartcase
 " statusline
 set laststatus=2
 set showcmd
-if system("uname") =~ "Darwin"
+if isdirectory(expand('~/.vim/bundle/vim-fugitive'))
     set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%{fugitive#statusline()}\ \ %l,%c%V%8P
 endif
 set hid

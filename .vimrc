@@ -16,12 +16,14 @@ source ~/.vim_includes/.char
 if has("unix")
     let s:uname = system("uname")
     if s:uname =~ "Darwin"
-        source ~/.vim_includes/.vundle
+        if isdirectory(expand('~/.vim/vundle.git'))
+            source ~/.vim_includes/.vundle
+        endif
         set makeprg=php\ -l\ %
         set errorformat=%m\ in\ %f\ on\ line\ %l
 
         source ~/.vim_includes/.php
-        source ~/.vim_includes/.git
+        source ~/.vim_includes/git
     endif
 endif
 
