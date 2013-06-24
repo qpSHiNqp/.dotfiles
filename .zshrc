@@ -1,7 +1,7 @@
 # hostname coloring
 ip2color()
 {
-	IFCONF='/sbin/ifconfig'
+	IFCONF='ifconfig'
 	int=`netstat -rn | grep -Ei '^(default|(0\.){3}0)' \
 		| sed -n "1 p" | awk '{ print $NF }'`
 	ip4oc=`${IFCONF} ${int} | grep -E '[0-9]{1,3}(\.[0-9]{1,3}){3}' \
@@ -163,8 +163,9 @@ export PATH=/usr/local/sbin:/sbin:/usr/sbin:/usr/local/bin:${PATH}
 test -x /usr/local/mysql && export PATH=/usr/local/mysql/bin:${PATH}
 test -x /Applications/adt-bundle-mac-x86_64 && export PATH=/usr/local/git/bin:/Applications/adt-bundle-mac-x86_64/sdk/tools:/Applications/adt-bundle-mac-x86_64/sdk/platform-tools:${PATH}
 test -x /usr/local/git && export PATH=/Applications/adt-bundle-mac-x86_64/sdk:${PATH}
+PHP_EXISTS='0'
 test -x /usr/local/bin/brew && PHP_EXISTS=`brew list | grep php | wc -l | awk '{print $1}'`
-test ! $PHP_EXISTS -eq 0 && export PATH=`brew --prefix php`/bin:${PATH}
+test $PHP_EXISTS -ne '0' && export PATH=`brew --prefix php`/bin:${PATH}
 test -x /usr/local/share/npm/bin && export PATH=/usr/local/share/npm/bin:${PATH}
 test -x /usr/local/depot_tools && export PATH=/usr/local/depot_tools:${PATH}
 
