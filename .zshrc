@@ -166,6 +166,7 @@ test -x /usr/local/git && export PATH=/Applications/adt-bundle-mac-x86_64/sdk:${
 test -x /usr/local/bin/brew && PHP_EXISTS=`brew list | grep php | wc -l | awk '{print $1}'`
 test ! $PHP_EXISTS -eq 0 && export PATH=`brew --prefix php`/bin:${PATH}
 test -x /usr/local/share/npm/bin && export PATH=/usr/local/share/npm/bin:${PATH}
+test -x /usr/local/depot_tools && export PATH=/usr/local/depot_tools:${PATH}
 
 if test -r ~/.zsh_includes/motd
 then
