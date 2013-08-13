@@ -9,4 +9,4 @@ fi
 which alpine > /dev/null 2>&1
 test $? -eq 0 && echo '--- To read mails, use "alpine" ---'
 
-test -x ~/.motd && cat ~/.motd
+test -f ~/.motd && cat ~/.motd
