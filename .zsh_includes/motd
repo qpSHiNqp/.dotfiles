@@ -6,6 +6,7 @@ else
   echo $sock
 fi
 
-which alpine > /dev/null
+which alpine > /dev/null 2>&1
 test $? -eq 0 && echo '--- To read mails, use "alpine" ---'
 
+test -x ~/.motd && cat ~/.motd
