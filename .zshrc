@@ -1,7 +1,7 @@
 # hostname coloring
 ip2color()
 {
-	IFCONF='ifconfig'
+	IFCONF='/sbin/ifconfig'
 	int=`netstat -rn | grep -Ei '^(default|(0\.){3}0)' \
 		| sed -n "1 p" | awk '{ print $NF }'`
 	ip4oc=`${IFCONF} ${int} | grep -E '[0-9]{1,3}(\.[0-9]{1,3}){3}' \
@@ -175,3 +175,5 @@ then
 fi
 [ -z "${REMOTEHOST}${SSH_CONNECTION}" ] && [ -r ~/.rvm ] &&
 	source ~/.zsh_includes/rvm
+
+test -x ~/.nvm && source ~/.nvm/nvm.sh
