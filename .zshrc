@@ -175,11 +175,8 @@ then
 fi
 [ -z "${REMOTEHOST}${SSH_CONNECTION}" ] && [ -r ~/.rvm ] &&
 	source ~/.zsh_includes/rvm
-<<<<<<< HEAD
 
 test -x ~/.nvm && source ~/.nvm/nvm.sh
-=======
 [ -r ~/.rbenv ] && eval "$(rbenv init -)"
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
->>>>>>> cf6b255378a96dac62b7bd0d0c574d04a9c41dcc
+[ -x ~/.rvm ] && PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
