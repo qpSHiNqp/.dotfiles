@@ -1,6 +1,8 @@
 # hostname coloring
 ip2color()
 {
+	test -x /sbin/ifconfig && IFCONF=/sbin/ifconfig
+	test -x /bin/ifconfig && IFCONF=/bin/ifconfig
 	IFCONF='/sbin/ifconfig'
 	int=`netstat -rn | grep -Ei '^(default|(0\.){3}0)' \
 		| sed -n "1 p" | awk '{ print $NF }'`
