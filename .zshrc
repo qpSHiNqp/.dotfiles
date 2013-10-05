@@ -170,7 +170,7 @@ test -x /usr/local/bin/brew && PHP_EXISTS=`brew list | grep php | wc -l | awk '{
 test $PHP_EXISTS -ne '0' && export PATH=`brew --prefix php`/bin:${PATH}
 test -x /usr/local/share/npm/bin && export PATH=/usr/local/share/npm/bin:${PATH}
 test -x /usr/local/depot_tools && export PATH=/usr/local/depot_tools:${PATH}
-test -x ~/.rbenv && export PATH="$HOME/.rbenv/bin:$PATH"
+test -x ~/.rbenv && export PATH="$HOME/.rbenv/bin:$HOME/.rbenv.shims:$PATH"
 
 if test -r ~/.zsh_includes/motd
 then
