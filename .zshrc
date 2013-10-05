@@ -168,15 +168,15 @@ test -x /usr/local/bin/brew && PHP_EXISTS=`brew list | grep php | wc -l | awk '{
 test $PHP_EXISTS -ne '0' && export PATH=`brew --prefix php`/bin:${PATH}
 test -x /usr/local/share/npm/bin && export PATH=/usr/local/share/npm/bin:${PATH}
 test -x /usr/local/depot_tools && export PATH=/usr/local/depot_tools:${PATH}
+test -x ~/.rbenv && export PATH="$HOME/.rbenv/bin:$PATH"
 
 if test -r ~/.zsh_includes/motd
 then
 	source ~/.zsh_includes/motd
 fi
-[ -z "${REMOTEHOST}${SSH_CONNECTION}" ] && [ -r ~/.rvm ] &&
-	source ~/.zsh_includes/rvm
+[ -z "${REMOTEHOST}${SSH_CONNECTION}" -a -x ~/.rvm ] && source ~/.zsh_includes/rvm
 
 test -x ~/.nvm && source ~/.nvm/nvm.sh
-[ -r ~/.rbenv ] && eval "$(rbenv init -)"
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 [ -x ~/.rvm ] && PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
