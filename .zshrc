@@ -179,6 +179,12 @@ fi
 [ -z "${REMOTEHOST}${SSH_CONNECTION}" -a -x ~/.rvm ] && source ~/.zsh_includes/rvm
 
 test -x ~/.nvm && source ~/.nvm/nvm.sh
+if [[ -s ~/.nvm/nvm.sh ]]; then
+	. ~/.nvm/nvm.sh
+	nvm use default >/dev/null 2>&1
+	npm_dir=${NVM_PATH}_modules
+	export NODE_PATH=$npm_dir
+fi
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 [ -x ~/.rvm ] && PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
