@@ -171,6 +171,7 @@ test $PHP_EXISTS -ne '0' && export PATH=`brew --prefix php`/bin:${PATH}
 test -x /usr/local/share/npm/bin && export PATH=/usr/local/share/npm/bin:${PATH}
 test -x /usr/local/depot_tools && export PATH=/usr/local/depot_tools:${PATH}
 test -x ~/.rbenv && export PATH="$HOME/.rbenv/bin:$HOME/.rbenv/shims:$PATH"
+test -d ~/bin && export PATH="$HOME/bin:$PATH"
 
 if test -r ~/.zsh_includes/motd
 then
@@ -185,6 +186,6 @@ if [[ -s ~/.nvm/nvm.sh ]]; then
 	npm_dir=${NVM_PATH}_modules
 	export NODE_PATH=$npm_dir
 fi
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+if which rbenv > /dev/null 2>&1; then eval "$(rbenv init -)"; fi
 
 [ -x ~/.rvm ] && PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
