@@ -156,6 +156,7 @@ alias e="vim"
 alias mv="mv -i"
 alias cp="cp -i"
 alias p="ps aux | head -n 1 && ps aux | grep"
+alias myhttpd="python -m SimpleHTTPServer 8080"
 
 zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
 zstyle ':completion:*:default' menu select=1
