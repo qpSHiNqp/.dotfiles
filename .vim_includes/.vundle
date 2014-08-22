@@ -4,14 +4,26 @@ filetype off
 set rtp+=~/.vim/vundle.git/
 call vundle#rc()
 Bundle 'Shougo/neocomplcache'
-"Bundle 'Shougo/unite.vim'
+Bundle 'Shougo/unite.vim'
+Bundle 'Shougo/vimproc.vim'
+Bundle 'Shougo/vimshell.vim'
+Bundle 'VimClojure'
+Bundle 'The-NERD-tree'
+Bundle 'taglist.vim'
+Bundle 'https://github.com/wesleyche/SrcExpl.git'
+Bundle 'https://github.com/wesleyche/Trinity.git'
+Bundle 'scrooloose/syntastic'
+Bundle 'jpalardy/vim-slime'
+Bundle 'Shougo/neosnippet'
 Bundle 'thinca/vim-ref'
 Bundle 'thinca/vim-quickrun'
 Bundle 'TwitVim'
 Bundle 'sudo.vim'
+Bundle 'leafgarland/typescript-vim'
 filetype plugin indent on     " required!
 
 " includes about vundled plugins
 source ~/.vim_includes/.neocomplcache
 source ~/.vim_includes/.unite
 source ~/.vim_includes/.vim-ref
+

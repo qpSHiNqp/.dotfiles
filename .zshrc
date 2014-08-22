@@ -43,6 +43,9 @@ set_prompt()
 	esac
 }
 
+autoload colors
+colors
+
 ip2color
 set_prompt $?
 
@@ -56,7 +59,7 @@ if is-at-least 4.3.10; then
 	zstyle ':vcs_info:git:*' check-for-changes true
 	zstyle ':vcs_info:git:*' stagedstr "+"
 	zstyle ':vcs_info:git:*' unstagedstr "-"
-	zstyle ':vcs_info:git:*' formats '(%s)-[%c%u%b]'
+	zstyle ':vcs_info:git:*' formats "(%s)-[%c%u%b]"
 	zstyle ':vcs_info:git:*' actionformats '(%s)-[%c%u%b|%a]'
 fi
 precmd () {
@@ -80,6 +83,7 @@ function _git_not_pushed()
 	fi
 	return 0
 }
+
 RPROMPT="%1(v|%F{green}%1v%2v%f|)${vcs_info_git_pushed}${WINDOW:+"[$WINDOW]"} ${RESET}"
 
 # RPROMPT other settings
@@ -98,7 +102,9 @@ esac
 
 bindkey -e                        # emacsライクなキーバインド
 
-#export LANG=ja_JP.UTF-8           # 日本語環境
+export LANG=ja_JP.UTF-8           # 日本語環境
+export LANGUAGE=ja_JP.UTF-8           # 日本語環境
+export LC_ALL=ja_JP.UTF-8
 export EDITOR=vim                 # エディタはvim
 
 
@@ -156,6 +162,10 @@ alias e="vim"
 alias mv="mv -i"
 alias cp="cp -i"
 alias p="ps aux | head -n 1 && ps aux | grep"
+alias jst='TZ=Asia/Tokyo date'
+alias pst='TZ=US/Pacific date'
+alias beer="ruby -e 'C=\"`stty size`\".scan(/\d+/)[1].to_i;S=\"\xf0\x9f\x8d\xba\";a={};puts \"\033[2J\";loop{a[rand(C)]=0;a.each{|x,o|;a[x]+=1;print \"\033[#{o};#{x}H \033[#{a[x]};#{x}H#{S} \033[0;0H\"};\$stdout.flush;sleep 0.01}'"
+
 
 zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
 zstyle ':completion:*:default' menu select=1
@@ -172,6 +182,8 @@ test -x /usr/local/share/npm/bin && export PATH=/usr/local/share/npm/bin:${PATH}
 test -x /usr/local/depot_tools && export PATH=/usr/local/depot_tools:${PATH}
 test -x ~/.rbenv && export PATH="$HOME/.rbenv/bin:$HOME/.rbenv/shims:$PATH"
 test -d ~/bin && export PATH="$HOME/bin:$PATH"
+test -d /usr/local/go && export GOPATH="$HOME/gocode" && export PATH="$PATH:/usr/local/go/bin:/$GOPATH/bin"
+
 
 if test -r ~/.zsh_includes/motd
 then
@@ -188,4 +200,6 @@ if [[ -s ~/.nvm/nvm.sh ]]; then
 fi
 if which rbenv > /dev/null 2>&1; then eval "$(rbenv init -)"; fi
 
+
 [ -x ~/.rvm ] && PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+test -x /usr/lobal/bin/boot2docker && export DOCKER_HOST=tcp://$(boot2docker ip 2>/dev/null):2375
