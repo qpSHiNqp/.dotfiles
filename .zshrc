@@ -173,6 +173,7 @@ test -x /usr/local/share/npm/bin && export PATH=/usr/local/share/npm/bin:${PATH}
 test -x /usr/local/depot_tools && export PATH=/usr/local/depot_tools:${PATH}
 test -x ~/.rbenv && export PATH="$HOME/.rbenv/bin:$HOME/.rbenv/shims:$PATH"
 test -d ~/bin && export PATH="$HOME/bin:$PATH"
+test -d /usr/local/go/bin && export PATH="/usr/local/go/bin:$PATH"
 
 if test -r ~/.zsh_includes/motd
 then
