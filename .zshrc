@@ -183,8 +183,7 @@ test -x /usr/local/share/npm/bin && export PATH=/usr/local/share/npm/bin:${PATH}
 test -x /usr/local/depot_tools && export PATH=/usr/local/depot_tools:${PATH}
 test -x ~/.rbenv && export PATH="$HOME/.rbenv/bin:$HOME/.rbenv/shims:$PATH"
 test -d ~/bin && export PATH="$HOME/bin:$PATH"
-
-[[ -s "$HOME/.gvm/bin" ]] && source "$HOME/.gvm/bin/gvm-init.sh"
+test -d "$HOME/.gvm" && source "$HOME/.gvm/scripts/gvm"
 
 
 if test -r ~/.zsh_includes/motd
@@ -206,5 +205,3 @@ if which rbenv > /dev/null 2>&1; then eval "$(rbenv init -)"; fi
 [ -x ~/.rvm ] && PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 test -x /usr/lobal/bin/boot2docker && export DOCKER_HOST=tcp://$(boot2docker ip 2>/dev/null):2375
 
-#THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
-[[ -s "/Users/shintaro/.gvm/bin/gvm-init.sh" ]] && source "/Users/shintaro/.gvm/bin/gvm-init.sh"
