@@ -2,3 +2,5 @@
 /.vim/vundle.git/
 .netrwhist
 /.screen_includes/screen.log
+.DS_Store
+.*.swp
