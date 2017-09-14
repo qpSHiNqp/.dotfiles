@@ -190,6 +190,7 @@ test -x /usr/local/depot_tools && export PATH=/usr/local/depot_tools:${PATH}
 test -x ~/.rbenv && export PATH="$HOME/.rbenv/bin:$HOME/.rbenv/shims:$PATH"
 test -d ~/bin && export PATH="$HOME/bin:$PATH"
 test -d $HOME/.pyenv/shims && export PATH=$HOME/.pyenv/shims:$PATH
+test -d "$HOME/.gvm" && source "$HOME/.gvm/scripts/gvm"
 
 if test -r ~/.zsh_includes/motd
 then
@@ -208,7 +209,6 @@ if which rbenv > /dev/null 2>&1; then eval "$(rbenv init -)"; fi
 
 
 [ -x ~/.rvm ] && PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-test -x /usr/local/bin/docker && export DOCKER_HOST=tcp://192.168.99.100:2375 && export DOCKER_CERT_PATH=/Users/shintaro/.docker/machine/machines/toolbox
 
 # The next line updates PATH for the Google Cloud SDK.
 source '/Users/shintaro/google-cloud-sdk/path.zsh.inc'
@@ -220,3 +220,5 @@ source '/Users/shintaro/google-cloud-sdk/completion.zsh.inc'
 [[ -s "/Users/shintaro/.gvm/scripts/gvm" ]] && source "/Users/shintaro/.gvm/scripts/gvm"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+test -x /usr/lobal/bin/boot2docker && export DOCKER_HOST=tcp://$(boot2docker ip 2>/dev/null):2375
+
