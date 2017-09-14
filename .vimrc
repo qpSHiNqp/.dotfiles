@@ -38,4 +38,4 @@ syntax enable
 "End dein Scripts-------------------------
 "
 "Colors 
-set clipboard+=unnamedplus
+set clipboard+=unnamed,autoselect
