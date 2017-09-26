@@ -197,8 +197,7 @@ let g:lightline = {
       \ }
 
 function! LightlineFilename()
-  let filename = &filetype ==# 'vimshell' ? vimshell#get_status_string() :
-        \ expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
+  let filename = expand('%') !=# '' ? expand('%') : '[No Name]'
   let modified = &modified ? ' +' : ''
   return filename . modified
 endfunction
