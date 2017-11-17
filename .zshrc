@@ -131,7 +131,7 @@ SAVEHIST=50000                    # saveする量
 setopt hist_ignore_dups           # 重複を記録しない
 setopt hist_reduce_blanks         # スペース排除
 setopt share_history              # 履歴ファイルを共有
-setopt EXTENDED_HISTORY           # zshの開始終了を記録
+setopt extended_history           # zshの開始終了を記録
 
 # history 操作まわり
 autoload history-search-end
@@ -210,11 +210,12 @@ if which rbenv > /dev/null 2>&1; then eval "$(rbenv init -)"; fi
 
 [ -x ~/.rvm ] && PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
-# The next line updates PATH for the Google Cloud SDK.
-source '/Users/shintaro/google-cloud-sdk/path.zsh.inc'
-
-# The next line enables shell command completion for gcloud.
-source '/Users/shintaro/google-cloud-sdk/completion.zsh.inc'
+if [[ -d "$HOME/google-cloud-sdk" ]]; then
+  # The next line updates PATH for the Google Cloud SDK.
+  source '/Users/shintaro/google-cloud-sdk/path.zsh.inc'
+  # The next line enables shell command completion for gcloud.
+  source '/Users/shintaro/google-cloud-sdk/completion.zsh.inc'
+fi
 
 # Golang and gvm
 [[ -s "/Users/shintaro/.gvm/scripts/gvm" ]] && source "/Users/shintaro/.gvm/scripts/gvm"
