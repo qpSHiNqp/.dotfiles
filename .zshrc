@@ -5,8 +5,9 @@ ip2color()
     test -x /sbin/ifconfig && IFCONF=/sbin/ifconfig
     test -x /bin/ifconfig && IFCONF=/bin/ifconfig
     int=`netstat -rn | awk '/^(default|0\.0\.0\.0)/ { print $NF; exit 0 }'`
-    ip4oc=`${IFCONF} ${int} \
-        | awk -F'[.[:space:]]' '/inet.*[0-9]{1,3}(\.[0-9]{1,3}){3}/{print $6; exit 0}'`
+    ip4oc=`ip -4 addr show dev ${int} | awk -F'[\s\./]' '/inet.*/{print $4}'`
+    #ip4oc=`${IFCONF} ${int} \
+    #    | awk -F'[.[:space:]]' '/inet.*[0-9]{1,3}(\.[0-9]{1,3}){3}/{print $6; exit 0}'`
     [ $ip4oc = '255' ] &&
         ip4oc=`${IFCONF} $int | awk '/inet[^6]/{ print $1; exit 0 }' \
         | sed -n "1 p" | sed -e 's/.*\.\([0-9]\{1,3\}\).*/\1/g'`
