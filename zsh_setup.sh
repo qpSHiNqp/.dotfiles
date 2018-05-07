@@ -17,12 +17,6 @@ if [ -f '.zshrc' ]; then
 fi
 ln -s ~/.dotfiles/.zshrc
 
-echo "deploying .zsh_includes/ ..."
-if [ -d '.zsh_includes' ]; then
-	rm -rf .zsh_includes
-fi
-ln -s ~/.dotfiles/.zsh_includes
-
 source ~/.zshrc
 
 echo "Deployed. You must type \"source ~/.zshrc\" to apply settings you downloaded."

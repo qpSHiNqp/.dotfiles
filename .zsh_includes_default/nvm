@@ -1,0 +1,11 @@
+if [[ -s ~/.nvm/nvm.sh ]]; then
+    source ~/.nvm/nvm.sh
+    nvm use default >/dev/null 2>&1
+    npm_dir=${NVM_PATH}_modules
+    export NODE_PATH=$npm_dir
+fi
+if [[ -s /usr/local/opt/nvm/nvm.sh ]]; then
+  export NVM_DIR="$HOME/.nvm"
+  source /usr/local/opt/nvm/nvm.sh >/dev/null 2>&1
+  nvm use default >/dev/null 2>&1
+fi

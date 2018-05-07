@@ -1,5 +1,8 @@
 /.vim/bundle/
 /.vim/vundle.git/
+/.vim/repos/
+/.vim/.cache/
+!.keep
 .netrwhist
 /.screen_includes/screen.log
 .DS_Store

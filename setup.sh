@@ -27,12 +27,6 @@ fi
 ln -s ~/.dotfiles/.zshrc
 source ~/.zshrc
 
-echo "deploying .zsh_includes/ ..."
-if [ -d '.zsh_includes' ]; then
-	rm -rf .zsh_includes
-fi
-ln -s ~/.dotfiles/.zsh_includes
-
 echo "deploying .vimrc ..."
 if [ -f '.vimrc' ]; then
 	rm .vimrc
