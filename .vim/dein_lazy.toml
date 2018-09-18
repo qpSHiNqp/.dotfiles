@@ -1,0 +1,7 @@
+[[plugins]]
+repo = 'leafgarland/typescript-vim'
+on_ft = ['typescript']
+
+[[plugins]]
+repo = 'Shougo/neocomplete.vim'
+on_i = 1

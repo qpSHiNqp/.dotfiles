@@ -3,39 +3,22 @@ if &compatible
   set nocompatible               " Be iMproved
 endif
 
-" Required:
-set runtimepath+=$HOME/.vim/repos/github.com/Shougo/dein.vim
+let s:vim_dir = expand("$HOME/.vim")
+let s:dein_repo_dir = s:vim_dir . '/repos/github.com/Shougo/dein.vim'
+
+if &runtimepath !~# '/dein/vim'
+  if !isdirectory(s:dein_repo_dir)
+    execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
+  endif
+  execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
+endif
 
 " Required:
-if dein#load_state('$HOME/.vim/')
-  call dein#begin('$HOME/.vim/')
+if dein#load_state(s:vim_dir)
+  call dein#begin(s:vim_dir)
 
-  " Let dein manage dein
-  " Required:
-  call dein#add('$HOME/.vim/repos/github.com/Shougo/dein.vim')
-
-  " Add or remove your plugins here:
-  call dein#add('Shougo/neosnippet.vim')
-  call dein#add('Shougo/neosnippet-snippets')
-  call dein#add('Shougo/neocomplete.vim')
-  call dein#add('Shougo/vimshell.vim')
-  call dein#add('Shougo/vimproc.vim', {'build': 'make'})
-  "call dein#add('osyo-manga/shabadou.vim')
-  "call dein#add('osyo-manga/vim-watchdogs')
-  "call dein#add('KazuakiM/vim-qfstatusline')
-  call dein#add('tpope/vim-fugitive')
-  call dein#add('scrooloose/nerdtree')
-  call dein#add('vim-syntastic/syntastic')
-  call dein#add('haya14busa/incsearch.vim')
-  call dein#add('thinca/vim-quickrun')
-  call dein#add('thinca/vim-ref')
-  call dein#add('itchyny/lightline.vim')
-  call dein#add('vim-scripts/sudo.vim')
-  call dein#add('leafgarland/typescript-vim')
-  "call dein#add('othree/yajs.vim', {'merged':0})
-
-  " You can specify revision/branch/tag.
-  "call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
+  call dein#load_toml(s:vim_dir . '/dein.toml', {'lazy': 0})
+  call dein#load_toml(s:vim_dir . '/dein_lazy.toml', {'lazy': 1})
 
   " Required:
   call dein#end()
