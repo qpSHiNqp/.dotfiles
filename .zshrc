@@ -17,7 +17,7 @@ setopt noautoremoveslash          # 勝手に消されると面倒
 setopt correct                    # もしかして: 機能
 setopt nonomatch
 setopt auto_cd                    # 自動的にディレクトリ移動
-cdpath=(~/Work ~/Work/repos)      # Work dir
+cdpath=(~/Work)                   # Work dir
 setopt rm_star_wait               # 事故防止
 
 # 履歴
@@ -64,10 +64,18 @@ alias p="ps aux | head -n 1 && ps aux | grep"
 alias passwdgen="date +%s | shasum | base64 | head -c 16 ; echo"
 
 # 環境依存系
-for file in $HOME/.zsh_includes/*; do
-  source "$file"
+for file in $HOME/.zsh_includes/*(.); do
+  if [[ -f "$file" ]]; then
+    source "$file"
+  fi
 done
+
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+

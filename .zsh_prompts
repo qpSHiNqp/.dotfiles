@@ -1,22 +1,3 @@
-# hostname coloring
-ip2color()
-{
-    IFCONF='/sbin/ifconfig'
-    test -x /sbin/ifconfig && IFCONF=/sbin/ifconfig
-    test -x /bin/ifconfig && IFCONF=/bin/ifconfig
-    int=`netstat -rn | awk '/^(default|0\.0\.0\.0)/ { print $NF; exit 0 }'`
-    ip4oc=`ip -4 addr show dev ${int} | awk -F'[\s\./]' '/inet.*/{print $4}'`
-    #ip4oc=`${IFCONF} ${int} \
-    #    | awk -F'[.[:space:]]' '/inet.*[0-9]{1,3}(\.[0-9]{1,3}){3}/{print $6; exit 0}'`
-    [ $ip4oc = '255' ] &&
-        ip4oc=`${IFCONF} $int | awk '/inet[^6]/{ print $1; exit 0 }' \
-        | sed -n "1 p" | sed -e 's/.*\.\([0-9]\{1,3\}\).*/\1/g'`
-
-    RET=`expr $(expr $ip4oc % 7 2> /dev/null) + 1 2> /dev/null`
-    [ $? -ne 0 ] && echo "expr err: not a decimal number; ip4oc = '${ip4oc}'"
-    return RET
-}
-
 # PROMPT
 set_prompt()
 {
@@ -48,8 +29,8 @@ set_prompt()
 autoload colors
 colors
 
-ip2color
-set_prompt $?
+code=`echo ${HOST%%.*} | cut -c 1 | xargs -I{} printf '%d' "'{}"`
+set_prompt `expr $(expr $code % 7 2>  /dev/null) + 1 2> /dev/null`
 
 # vcs_info (display branch name)
 autoload -Uz vcs_info

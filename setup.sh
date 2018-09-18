@@ -20,6 +20,9 @@ fi
 
 unalias rm
 cd ~
+if [ ! -d "$HOME/.zsh_includes" ]; then
+  mkdir -p "$HOME/.zsh_includes"
+fi
 echo "deploying .zshrc ..."
 if [ -f '.zshrc' ]; then
 	rm .zshrc
